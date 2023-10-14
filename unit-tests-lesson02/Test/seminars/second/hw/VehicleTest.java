@@ -3,57 +3,79 @@ package seminars.second.hw;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class VehicleTest {
     Car car;
     Motorcycle moto;
 
     @BeforeEach
-    void setUp(){
-        car = new Car("Dodge", "Ram", 2010);
+    void setUp() {
+        car = new Car("SUBARU", "FORESTER", 2010);
         moto = new Motorcycle("KAWASAKI", "NINJA", 2023);
-        System.out.println(car.toString());
-        System.out.println(moto.toString());
+
+
+
+
+//        System.out.println(car.toString());
+//        System.out.println(car.getSpeed());
+
+
+//        System.out.println(moto.toString());
+//        System.out.println(moto.getSpeed());
 
     }
 
 
-    @Test // - Проверить, что экземпляр объекта Car также является экземпляром транспортного средства (используя оператор instanceof).
+    @Test
+    // - Проверить, что экземпляр объекта Car также является экземпляром транспортного средства (используя оператор instanceof).
     public void testCarIsInstanceOfVehicle() {
         //Car car = new Car("Dodge", "Ram", 2010);
         assertTrue(car instanceof Vehicle);
     }
 
     @Test // - Проверить, что объект Car создается с 4-мя колесами.
-    public void testCarIsNumWheels(){
+    public void testCarIsNumWheels() {
         assertEquals(car.getNumWheels(), 4);
     }
 
     @Test // -Проверить, что объект Motorcycle создается с 2-мя колесами.
-    public void testMotoIsNumWheels(){
+    public void testMotoIsNumWheels() {
         assertEquals(moto.getNumWheels(), 2);
     }
 
     @Test // - Проверить, что объект Car развивает скорость 60 в режиме тестового вождения (используя метод testDrive()).
+    public void testCarDriveIsSpeed() {
 
-    public void testCarSpeedIsNumWheels(){
-        assertEquals(moto.getNumWheels(), 2);
+        car.testDrive();
+
+        assertThat (car.getSpeed()).isEqualTo(60);
     }
 
-    /*
 
-- Проверить, что объект Motorcycle развивает скорость 75 в режиме тестового вождения (используя метод testDrive()).
+    @Test //- Проверить, что объект Motorcycle развивает скорость 75 в режиме тестового вождения (используя метод testDrive()).
+    public void testMotoDriveIsSpeed() {
 
-- Проверить, что в режиме парковки (сначала testDrive, потом park, т.е. эмуляция движения транспорта) машина останавливается (speed = 0).
+        moto.testDrive();
 
-- Проверить, что в режиме парковки (сначала testDrive, потом park, т.е. эмуляция движения транспорта) мотоцикл останавливается (speed = 0).
+        assertThat (moto.getSpeed()).isEqualTo(75);
+    }
 
-В этом проекте, вы будете работать с проектом ""Vehicle"", который представляет собой иерархию классов, включающую абстрактный базовый класс ""Vehicle"" и два его подкласса ""Car"" и ""Motorcycle"".
-**/
+    @Test // - Проверить, что в режиме парковки (сначала testDrive, потом park, т.е. эмуляция движения транспорта) машина останавливается (speed = 0).
+    public void testCarParkIsSpeed() {
+        car.testDrive();
+        car.park();
+        assertThat (car.getSpeed()).isEqualTo(0);
+    }
 
 
-
-
+    @Test //- Проверить, что в режиме парковки (сначала testDrive, потом park, т.е. эмуляция движения транспорта) мотоцикл останавливается (speed = 0).
+    public void testMotoParkIsSpeed() {
+        moto.testDrive();
+        moto.park();
+        assertThat (moto.getSpeed()).isEqualTo(0);
+    }
 
 }

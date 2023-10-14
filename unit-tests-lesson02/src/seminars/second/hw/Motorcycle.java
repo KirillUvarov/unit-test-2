@@ -24,7 +24,7 @@ public class Motorcycle extends Vehicle {
     //public String toString() { return "This motorcycle is a “ + year + “ “ + make + “ “ + model + “;"; }
     @Override
     public String toString() {
-        return String.format("This car is a: %n company: %s%n model: %s%n  year: %d%n", company, model, yearRelease);
+        return String.format("This moto is a: %n company: %s%n model: %s%n  year: %d%n", company, model, yearRelease);
 
 
     }
