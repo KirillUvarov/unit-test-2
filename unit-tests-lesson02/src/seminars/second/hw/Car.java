@@ -20,5 +20,10 @@ public class Car extends Vehicle {
     public int getYearRelease() { return yearRelease; }
     public int getNumWheels() { return numWheels; }
     public int getSpeed() { return speed; }
-    public String toString() { return "This car is a “ + year + “ “ + make + “ “ + model + ";}
+    @Override
+    public String toString() {
+        return String.format("This car is a: %n company: %s%n model: %s%n  year: %d%n", company, model, yearRelease);
+
+
+    }
 }
